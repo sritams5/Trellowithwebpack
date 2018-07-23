@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>index</title>
+
+  <!-- Bootstrap core CSS -->
+</head>
+
+<body id="body">
+
+  <!-- Navigation -->
+  <nav id="topnav" class="navbar navbar-dark bg-dark navbar-toggleable-md navbar-expand-md ">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#"><img alt="logo" id="brand" class="img-responsive"></a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" active>Home </a>
+        </li>
+        <li class="nav-item hidden">
+          <a class="nav-link" id="boards" href="#">Boards <span class="sr-only">(current)</span></a>
+        </li>
+    </ul>
+</div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <div class="p-2 col-md-4">
+      <div class="card" style="width: 100%;text-align:center;" id="firstsection">
+        <nav id="leftnav" class="navbar navbar-light navbar-expand-sm px-0 flex-row flex-nowrap card-body">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarWEX" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarWEX">
+            <div class="nav flex-sm-column flex-row flex-fill justify-content-center">
+              <a class="nav-item nav-link card-title active" href="#">Home</a>
+              <a class="nav-item nav-link card-title" href="boards.html">Boards</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="p-2 col-md-4">
+      <div class="card" style="width: 100%;text-align:center;" id="secondsection">
+        <img class="card-img-top" id="cardimage" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Stay on track and up to date</h5>
+          <p class="card-text">Invite people to boards and cards, leave comments, add due dates, and we'll show the most important activity here.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-2 col-md-4">
+      <div class="card" style="width: 100%;text-align:center;" id="thirdsection">
+        <div class="card-body">
+          <button type="button" id="showBtn" class="btn btn-light col-sm-12 card-text" data-toggle="modal" data-target="#myModal">+ Create a Board</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
+  <!-- loaded popover content -->
+  <div class="hidden example-popover-content">
+  	<ul class="list-group custom-popover" id="popoeverid">
+
+  	</ul>
+  </div>
+
+  <div class="hidden example-popover-title">
+  	<h6>Boards</h6>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <!-- <label for="email">Email:</label> -->
+              <input type="text" class="form-control" id="boardname" placeholder="Add board title" name="boardname"></input>
+            </div>
+            <button type="submit" id="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript -->
+  <!-- <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/index.js"> </script> -->
+<script type="text/javascript" src="bundle.js"></script></body>
+
+</html>
