@@ -17,57 +17,56 @@ import  '../node_modules/bootstrap/dist/js/bootstrap.js';
 import index from '../css/index.css';
 // import '../public/boards.html';
 // import '../public/landing.html';
-
 //import './jquery.min.js';
 //import './jquery-ui.min.js';
 // import './jquery.slim.min.js';
 //import './popper.js';
 // import './bootstrap.bundle.min.js';
 //import './bootstrap.min.js';
-document.getElementById('popoeverid').addEventListener("click", function(event) {
-  lang1(event);
-});
+// document.getElementById('popoeverid').addEventListener("click", function(event) {
+//   lang1(event);
+// });
 if(document.title=='landing'){
-var boardnamehead = getQueryVariable("boardname");
+let boardnamehead = getQueryVariable("boardname");
 document.getElementById('boardnamevalue').textContent=boardnamehead;
 document.getElementById('addlistid').addEventListener("click", function(event) {
 listFunction();
 });
 function getQueryVariable(variable) {
-  var query = window.location.search.substring(1);
-  var vars = query.split("&");
-  for (var i=0;i<vars.length;i++) {
-    var pair = vars[i].split("=");
+  let query = window.location.search.substring(1);
+  let vars = query.split("&");
+  for (let i=0;i<vars.length;i++) {
+    let pair = vars[i].split("=");
     if (pair[0] == variable) {
       return pair[1];
     }
   }
   console.log('Query Variable ' + variable + ' not found');
 }
-var popoverpoint = document.getElementById('popoeverid');
+//let popoverpoint = document.getElementById('popoeverid');
 if (localStorage.getItem('trelloboardkeys') === null) {
-	var poplistelemt=document.createElement('li');
+	let poplistelemt=document.createElement('li');
 	poplistelemt.className= 'list-group-item listselclass';
-	var span = document.createElement('span');
+	let span = document.createElement('span');
 	span.appendChild(document.createTextNode(boardnamehead));
 	poplistelemt.appendChild(span);
-	popoverpoint.appendChild(poplistelemt);
+	//popoverpoint.appendChild(poplistelemt);
 }else{
-	var boardnames=localStorage.getItem('trelloboardkeys').split('buntyy1buntyy');
-	for(var i=0;i<boardnames.length;i++){
-		var poplistelemt=document.createElement('li');
+	let boardnames=localStorage.getItem('trelloboardkeys').split('buntyy1buntyy');
+	for(let i=0;i<boardnames.length;i++){
+		let poplistelemt=document.createElement('li');
 		poplistelemt.className= 'list-group-item listselclass';
-		var span = document.createElement('span');
+		let span = document.createElement('span');
 		span.appendChild(document.createTextNode(boardnames[i]));
 		poplistelemt.appendChild(span);
-		popoverpoint.appendChild(poplistelemt);
+		//popoverpoint.appendChild(poplistelemt);
 	}
 }
 // function lang1(event) {
-// 			 var target = event.target || event.srcElement;
+// 			 let target = event.target || event.srcElement;
 // 			 window.location.href = 'landing.html?boardname='+encodeURIComponent(event.target.textContent || event.target.innerText);
 // 	 }
-var head=document.getElementById('boards');
+let head=document.getElementById('boards');
 head.setAttribute("data-trigger", "focus");
 
 $(head).popover({
@@ -85,6 +84,9 @@ if (localStorage.getItem(boardnamehead) === null) {
 }else{
 	document.getElementById('createListid').style.display='none';
 	document.getElementById('mainContainer').innerHTML=localStorage.getItem(boardnamehead);
+  document.getElementById('addlistid').addEventListener("click", function(event) {
+  listFunction();
+  });
 	$('.connected').sortable({
 		connectWith: '.connected',
 		stop: function(event, ui) {
@@ -95,8 +97,8 @@ if (localStorage.getItem(boardnamehead) === null) {
 
 jQuery.fn.swap = function(b){
     b = jQuery(b)[0];
-    var a = this[0];
-    var t = a.parentNode.insertBefore(document.createTextNode(''), a);
+    let a = this[0];
+    let t = a.parentNode.insertBefore(document.createTextNode(''), a);
     b.parentNode.insertBefore(a, b);
     t.parentNode.insertBefore(b, t);
     t.parentNode.removeChild(t);
@@ -114,7 +116,7 @@ $( ".divclass" ).droppable({
     hoverClass: "ui-state-active",
     drop: function( event, ui ) {
 
-        var draggable = ui.draggable, droppable = $(this),
+        let draggable = ui.draggable, droppable = $(this),
             dragPos = draggable.position(), dropPos = droppable.position();
 
         draggable.css({
@@ -135,16 +137,16 @@ $( ".divclass" ).droppable({
 
 
 
- 	var el=document.querySelectorAll("input[type=text]")
+ 	let el=document.querySelectorAll("input[type=text]")
 
-	for(var i=0; i < el.length; i++){
+	for(let i=0; i < el.length; i++){
 	    el[i].addEventListener('keyup', function (event) {
 				event.preventDefault();
 				if (event.keyCode === 13) {
 					if(this.classList.contains('inputContainerClass')){
 						if(this.value.trim() != "")
 						{
-							var sblng=getSiblings(this.parentNode);
+							let sblng=getSiblings(this.parentNode);
 							cardFunction(this,sblng[1],this.id,sblng[1].id);
 							localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 						}
@@ -158,22 +160,22 @@ $( ".divclass" ).droppable({
 			localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 		}
 		if(this.classList.contains('closeCardBtn')){
-			var sib= getSiblings(this);
+			let sib= getSiblings(this);
 			sib[0].value="";
-			var sib1= getSiblings(this.parentNode);
+			let sib1= getSiblings(this.parentNode);
 			sib1[3].style.display = 'block';
 			this.parentNode.style.display = 'none';
 			localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 		}
 		if(this.classList.contains('custombtnclass')){
-			var sib1= getSiblings(this.parentNode);
+			let sib1= getSiblings(this.parentNode);
 			sib1[3].style.display = 'block';
 			this.parentNode.style.display = 'none';
 			localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 		}
 		if(this.classList.contains('editlistBtn')){
-			var item = this;
-			var siblings = getSiblings(item);
+			let item = this;
+			let siblings = getSiblings(item);
 			if(item.classList.contains("on")) {
 				$(siblings[1]).hide();
 				$(siblings[0]).show();
@@ -197,9 +199,9 @@ $( ".divclass" ).droppable({
 			localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 		}
 		if(this.classList.contains('savecardBtn')){
-				var cursiblings = getSiblings(this);
+				let cursiblings = getSiblings(this);
 				console.log(cursiblings);
-				var sblng=getSiblings(this.parentNode);
+				let sblng=getSiblings(this.parentNode);
 				console.log(sblng);
 				if(cursiblings[0].value.trim() != "")
 				{
@@ -209,11 +211,11 @@ $( ".divclass" ).droppable({
 		}
 	});
 }
-var mainContainer = document.getElementById("mainContainer");
-var mainSection = document.getElementsByClassName('jumbotron');
-var poplist=document.getElementsByClassName("example");
-var createList = document.getElementById("createList");
-var iid=0;
+let mainContainer = document.getElementById("mainContainer");
+let mainSection = document.getElementsByClassName('jumbotron');
+let poplist=document.getElementsByClassName("example");
+let createList = document.getElementById("createList");
+let iid=0;
 createList.addEventListener("keyup", function(event) {
 	event.preventDefault();
 	if (event.keyCode === 13) {
@@ -233,7 +235,7 @@ function showTip(ele){
 }
 document.getElementById('showBtn').addEventListener("click", function(event) {
 	event.preventDefault();
-	var sibl=getSiblings(this);
+	let sibl=getSiblings(this);
 	sibl[0].style.display = "block";
 	this.style.display = 'none';
 	this.parentNode.classList.remove('vertical-center-transparent');
@@ -242,9 +244,9 @@ document.getElementById('showBtn').addEventListener("click", function(event) {
 });
 document.getElementById('hideBtn').addEventListener("click", function(event) {
 	event.preventDefault();
-	var cursibl=getSiblings(this);
+	let cursibl=getSiblings(this);
 	cursibl[0].value="";
-	var parentsibl=getSiblings(this.parentNode);
+	let parentsibl=getSiblings(this.parentNode);
 	parentsibl[0].style.display = "block";
 	this.parentNode.style.display = 'none';
 	this.parentNode.parentNode.classList.add('vertical-center-transparent');
@@ -253,24 +255,24 @@ document.getElementById('hideBtn').addEventListener("click", function(event) {
 });
 function createNewList(text){
 	iid++;
-	var section = document.createElement("section");
+	let section = document.createElement("section");
 	section.id = "list" + iid;
 	section.name = "list" + iid;
 	section.className = 'divclass row form-group';
 
-	var headerDiv = document.createElement("div");
+	let headerDiv = document.createElement("div");
 	headerDiv.id = "headerDiv" + iid;
 	headerDiv.name = "headerDiv" + iid;
 	headerDiv.className = 'col-sm-12 d-flex form-group';
 
 
-	var h5 = document.createElement("h5");
+	let h5 = document.createElement("h5");
 	h5.textContent = text;
 	h5.className = 'flex-grow-1';
 	h5.style = 'text-align:left;color:white;';
 	h5.setAttribute("contenteditable","true");
 
-	var closeA = document.createElement("button");
+	let closeA = document.createElement("button");
 	closeA.textContent = 'x';
 	closeA.tabindex="0";
 	closeA.className = "btn btn-light removeCardBtn";
@@ -282,19 +284,19 @@ function createNewList(text){
 	};
 	headerDiv.appendChild(h5);
 	headerDiv.appendChild(closeA);
-	var msgContainer = document.createElement('ul');
+	let msgContainer = document.createElement('ul');
 	msgContainer.id = "listcontect" + iid;
 	msgContainer.name = "listcontect" + iid;
 	msgContainer.className = 'connected list col-sm-12';
-	var tempChild = document.createElement('li');
+	let tempChild = document.createElement('li');
 	msgContainer.appendChild(tempChild);
-	var br = document.createElement('br');
+	let br = document.createElement('br');
 
-	var div = document.createElement("div");
+	let div = document.createElement("div");
 	div.id = "div" + iid;
 	div.name = "div" + iid;
 	div.className = 'col-sm-12 form-group';
-	var inputContainer = document.createElement("input");
+	let inputContainer = document.createElement("input");
 	inputContainer.type = "text";
 	inputContainer.name = "listinput" + iid;
 	inputContainer.id = "listinput" + iid;
@@ -310,7 +312,7 @@ function createNewList(text){
 			}
 		}
 	});
-	var addCardBtn = document.createElement('button');
+	let addCardBtn = document.createElement('button');
 	addCardBtn.textContent = 'Save Card';
 	addCardBtn.className = 'col-md-4 btn btn-primary savecardBtn';
 	addCardBtn.onclick = function() {
@@ -320,13 +322,13 @@ function createNewList(text){
 			localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 		}
 	};
-	var closeCardBtn = document.createElement('button');
+	let closeCardBtn = document.createElement('button');
 	closeCardBtn.textContent = 'X';
 	closeCardBtn.className = 'btn btn-link col-sm-2 closeCardBtn';
 	closeCardBtn.onclick = function() {
-		var sib= getSiblings(this);
+		let sib= getSiblings(this);
 		sib[0].value="";
-		var sib1= getSiblings(this.parentNode);
+		let sib1= getSiblings(this.parentNode);
 		sib1[3].style.display = 'block';
 		this.parentNode.style.display = 'none';
 		localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
@@ -335,15 +337,15 @@ function createNewList(text){
 	div.appendChild(addCardBtn);
 	div.appendChild(closeCardBtn);
 	div.style = 'display:none';
-	var divBtn = document.createElement("div");
+	let divBtn = document.createElement("div");
 	divBtn.id = "divBtn" + iid;
 	divBtn.name = "divBtn" + iid;
 	divBtn.className = 'col-sm-12 form-group';
-	var addCardDefaultBtn = document.createElement('button');
+	let addCardDefaultBtn = document.createElement('button');
 	addCardDefaultBtn.textContent = "+Add Card"
 	addCardDefaultBtn.className = 'col-sm-12 btn form-group custombtnclass';
 	addCardDefaultBtn.addEventListener("click", function(event) {
-		var sib1= getSiblings(this.parentNode);
+		let sib1= getSiblings(this.parentNode);
 		sib1[3].style.display = 'block';
 		this.parentNode.style.display = 'none';
 		localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
@@ -369,8 +371,8 @@ function cardFunction(inputContainer,msgContainer,inputContainerid,msgContaineri
 	});
 		jQuery.fn.swap = function(b){
     b = jQuery(b)[0];
-    var a = this[0];
-    var t = a.parentNode.insertBefore(document.createTextNode(''), a);
+    let a = this[0];
+    let t = a.parentNode.insertBefore(document.createTextNode(''), a);
     b.parentNode.insertBefore(a, b);
     t.parentNode.insertBefore(b, t);
     t.parentNode.removeChild(t);
@@ -388,7 +390,7 @@ $( ".divclass" ).droppable({
     hoverClass: "ui-state-active",
     drop: function( event, ui ) {
 
-        var draggable = ui.draggable, droppable = $(this),
+        let draggable = ui.draggable, droppable = $(this),
             dragPos = draggable.position(), dropPos = droppable.position();
 
         draggable.css({
@@ -408,23 +410,23 @@ $( ".divclass" ).droppable({
 });
 }
 function createCard(card,list,cardid,listid) {
-	var cardval = card.value;
-	var entry = document.createElement('li');
+	let cardval = card.value;
+	let entry = document.createElement('li');
 	entry.className = 'row listItem';
-	var span = document.createElement('span');
+	let span = document.createElement('span');
 	span.className = 'display col-sm-9 form-control';
 	span.appendChild(document.createTextNode(cardval));
-	var inputC = document.createElement("input");
+	let inputC = document.createElement("input");
 	inputC.type = "text";
 	inputC.className = 'edit col-sm-9 form-control';
 	inputC.style = 'display:none';
 
-	var editBtn = document.createElement('button');
+	let editBtn = document.createElement('button');
 	editBtn.textContent = 'edit';
 	editBtn.className = 'off col-sm-3 btn btn-info editlistBtn';
 	editBtn.onclick = function() {
-		var item = this;
-		var siblings = getSiblings(item);
+		let item = this;
+		let siblings = getSiblings(item);
 		if(item.classList.contains("on")) {
 			$(siblings[1]).hide();
 			$(siblings[0]).show();
@@ -454,17 +456,17 @@ function createCard(card,list,cardid,listid) {
 	list.appendChild(entry);
 	localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 }
-var getSiblings = function (elem) {
-	var siblings = [];
-	var sibling = elem.parentNode.firstChild;
-	var skipMe = elem;
+let getSiblings = function (elem) {
+	let siblings = [];
+	let sibling = elem.parentNode.firstChild;
+	let skipMe = elem;
 	for ( ; sibling; sibling = sibling.nextSibling )
 	if ( sibling.nodeType == 1 && sibling != elem )
 	siblings.push( sibling );
 	return siblings;
 };
 function elementChildren (element) {
-	var childNodes = element.childNodes,
+	let childNodes = element.childNodes,
 	children = [],
 	i = childNodes.length;
 
@@ -483,8 +485,8 @@ $('.connected').sortable({
 	});
 jQuery.fn.swap = function(b){
     b = jQuery(b)[0];
-    var a = this[0];
-    var t = a.parentNode.insertBefore(document.createTextNode(''), a);
+    let a = this[0];
+    let t = a.parentNode.insertBefore(document.createTextNode(''), a);
     b.parentNode.insertBefore(a, b);
     t.parentNode.insertBefore(b, t);
     t.parentNode.removeChild(t);
@@ -500,7 +502,7 @@ $( ".divclass" ).droppable({
     hoverClass: "ui-state-active",
     drop: function( event, ui ) {
 
-        var draggable = ui.draggable, droppable = $(this),
+        let draggable = ui.draggable, droppable = $(this),
             dragPos = draggable.position(), dropPos = droppable.position();
 
         draggable.css({
@@ -519,8 +521,8 @@ $( ".divclass" ).droppable({
     }
 });
 }else if(document.title=='index'){
-  var boardname=document.getElementById('boardname');
-  var modalBtn=document.getElementById('submit');
+  let boardname=document.getElementById('boardname');
+  let modalBtn=document.getElementById('submit');
     boardname.addEventListener("keydown", function(event) {
       if(this.value.trim()!=""){
         modalBtn.className='btn btn-primary';
@@ -538,7 +540,7 @@ $( ".divclass" ).droppable({
     });
     modalBtn.addEventListener("click", function(event) {
       event.preventDefault();
-      var val=boardname.value;
+      let val=boardname.value;
       if(val.trim()!=""){
         boardname.value="";
         if (localStorage.getItem('trelloboardkeys') === null) {
@@ -554,25 +556,25 @@ $( ".divclass" ).droppable({
       }
     });
 
-    var popoverpoint = document.getElementById('popoeverid');
+    //let popoverpoint = document.getElementById('popoeverid');
     if (localStorage.getItem('trelloboardkeys') === null) {
 
     }else{
-      var boardnames=localStorage.getItem('trelloboardkeys').split('buntyy1buntyy');
-      for(var i=0;i<boardnames.length;i++){
-        var poplistelemt=document.createElement('li');
+      let boardnames=localStorage.getItem('trelloboardkeys').split('buntyy1buntyy');
+      for(let i=0;i<boardnames.length;i++){
+        let poplistelemt=document.createElement('li');
         poplistelemt.className= 'list-group-item listselclass';
-        var span = document.createElement('span');
+        let span = document.createElement('span');
         span.appendChild(document.createTextNode(boardnames[i]));
         poplistelemt.appendChild(span);
-        popoverpoint.appendChild(poplistelemt);
+        //popoverpoint.appendChild(poplistelemt);
       }
     }
     // function lang1(event) {
-    //        var target = event.target || event.srcElement;
+    //        let target = event.target || event.srcElement;
     //        window.location.href = 'landing.html?boardname='+encodeURIComponent(event.target.textContent || event.target.innerText);
     //    }
-    var head=document.getElementById('boards');
+    let head=document.getElementById('boards');
     head.setAttribute("data-trigger", "focus");
 
     $(head).popover({
@@ -585,32 +587,32 @@ $( ".divclass" ).droppable({
       }
     });
 }else if(document.title=='boards'){
-  var popoverpoint = document.getElementById('popoeverid');
+  //let popoverpoint = document.getElementById('popoeverid');
   if (localStorage.getItem('trelloboardkeys') === null) {
 
   }else{
-    var multicardcontainer=document.getElementById('multicardcontainer');
-    var boardnames=localStorage.getItem('trelloboardkeys').split('buntyy1buntyy');
-    for(var i=0;i<boardnames.length;i++){
-      var poplistelemt=document.createElement('li');
+    let multicardcontainer=document.getElementById('multicardcontainer');
+    let boardnames=localStorage.getItem('trelloboardkeys').split('buntyy1buntyy');
+    for(let i=0;i<boardnames.length;i++){
+      let poplistelemt=document.createElement('li');
       poplistelemt.className= 'list-group-item listselclass';
-      var span = document.createElement('span');
+      let span = document.createElement('span');
       span.appendChild(document.createTextNode(boardnames[i]));
       poplistelemt.appendChild(span);
-      popoverpoint.appendChild(poplistelemt);
+      //popoverpoint.appendChild(poplistelemt);
 
-      var divcard = document.createElement('div');
+      let divcard = document.createElement('div');
       divcard.className = 'card card-custom mx-2 mb-3';
       divcard.style="color:white;font-size:20px;"
-      var anch = document.createElement('a');
-      var img=document.createElement('img');
+      let anch = document.createElement('a');
+      let img=document.createElement('img');
       img.className='card-img';
       if(isOdd(i+2)){
         img.src = 'img/back3.gif';
       }else{
         img.src = 'img/back4.jpg'
       }
-      var span=document.createElement('span');
+      span=document.createElement('span');
       span.appendChild(document.createTextNode(boardnames[i]));
       span.className='centered';
       anch.appendChild(img);
@@ -624,10 +626,10 @@ $( ".divclass" ).droppable({
   }
   function isOdd(num) { return num % 2;}
   // function lang1(event) {
-  //        var target = event.target || event.srcElement;
+  //        let target = event.target || event.srcElement;
   //        window.location.href = 'landing.html?boardname='+encodeURIComponent(event.target.textContent || event.target.innerText);
   //    }
-  var head=document.getElementById('boards');
+  let head=document.getElementById('boards');
   head.setAttribute("data-trigger", "focus");
 
   $(head).popover({
@@ -641,6 +643,6 @@ $( ".divclass" ).droppable({
   });
 }
 function lang1(event) {
-       var target = event.target || event.srcElement;
+       let target = event.target || event.srcElement;
        window.location.href = 'landing.html?boardname='+encodeURIComponent(event.target.textContent || event.target.innerText);
    }

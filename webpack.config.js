@@ -1,6 +1,6 @@
-//const path=require('path');
+const path=require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+//const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 //var merge = require('merge');
 //var parts = require('parts');
@@ -23,7 +23,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 //
 // ]);
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    app:'./src/index.js'
+  },
   devtool: 'inline-source-map'
 ,
   output: {
@@ -52,6 +54,16 @@ module.exports = {
           },
         },
       },
+      // {
+      //   test: /\.html$/,
+      //   use: [{
+      //     loader: "file-loader",
+      //     options: {
+      //       name: "[name].[ext]",
+      //     },
+      //   }],
+      //   exclude: path.resolve(__dirname,'index.html')
+      // }
     //   {
     //   test: /\.(jpe?g|png|gif|svg)$/i,
     //   loader: "file-loader?name=/img/[name].[ext]"
@@ -60,26 +72,32 @@ module.exports = {
     ]
   },
   plugins: [
+
+    // new CopyWebpackPlugin([
+    //   { from: './public/boards.html', to: './boards.html' }
+    // ]),
+    // new CopyWebpackPlugin([
+    //   { from: './public/landing.html', to: './landing.html' }
+    // ]),
     new HtmlWebpackPlugin({
+      inject:true,
+      title: 'boards',
+      filename: 'boards.html',
+      template: './public/boards.html',
+      chunks:['app']
+    }),
+    new HtmlWebpackPlugin({
+      inject:true,
+      title: 'landing',
+      filename: 'landing.html',
+      template: './public/landing.html',
+      chunks:['app']
+    }),
+    new HtmlWebpackPlugin({
+      inject:true,
       title: 'index',
       template: 'index.html',
-    }),
-    new CopyWebpackPlugin([
-      { from: './public/boards.html', to: './boards.html' }
-    ]),
-    new CopyWebpackPlugin([
-      { from: './public/landing.html', to: './landing.html' }
-    ])
-    // new HtmlWebpackPlugin({
-    //   title: 'boards',
-    //   template: 'public/boards.html',
-    //   chunks: ['boardsEntry']
-    // }),
-    // new HtmlWebpackPlugin({
-    //   title: 'landing',
-    //   template: 'public/landing.html',
-    //   chunks: ['landingEntry']
-    // })
+    })
 ],
 mode: 'development',
 };
