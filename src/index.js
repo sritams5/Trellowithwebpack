@@ -1,38 +1,17 @@
-import logo from '../img/logo.png';
-import back3 from '../img/back3.gif';
-import back4 from '../img/back4.jpg';
-import editicon from '../img/editicon.png';
-import modalback from '../img/modalback.jpg';
-import cardsvg from '../img/card1.svg';
-
-// import bootstrap from '../css/bootstrap.min.css';
 import $ from 'jquery';
 
 global.jQuery = require('jquery');
 require('jquery-ui-dist/jquery-ui.js');
 
 import  '../node_modules/bootstrap/dist/js/bootstrap.js';
-// import 'popper.js';
-//import 'bootstrap';
 import index from '../css/index.css';
-// import '../public/boards.html';
-// import '../public/landing.html';
-//import './jquery.min.js';
-//import './jquery-ui.min.js';
-// import './jquery.slim.min.js';
-//import './popper.js';
-// import './bootstrap.bundle.min.js';
-//import './bootstrap.min.js';
-// document.getElementById('popoeverid').addEventListener("click", function(event) {
-//   lang1(event);
-// });
 if(document.title=='landing'){
-let boardnamehead = getQueryVariable("boardname");
+/*let boardnamehead = getQueryVariable("boardname");
 document.getElementById('boardnamevalue').textContent=boardnamehead;
 document.getElementById('addlistid').addEventListener("click", function(event) {
 listFunction();
-});
-function getQueryVariable(variable) {
+});2*/
+/*function getQueryVariable(variable) {
   let query = window.location.search.substring(1);
   let vars = query.split("&");
   for (let i=0;i<vars.length;i++) {
@@ -42,7 +21,7 @@ function getQueryVariable(variable) {
     }
   }
   console.log('Query Variable ' + variable + ' not found');
-}
+}1*/
 //let popoverpoint = document.getElementById('popoeverid');
 if (localStorage.getItem('trelloboardkeys') === null) {
 	let poplistelemt=document.createElement('li');
@@ -223,13 +202,13 @@ createList.addEventListener("keyup", function(event) {
 		localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 	}
 });
-function listFunction() {
+/*function listFunction() {
 	if(createList.value.trim() != ""){
 		createNewList(document.getElementById('createList').value);
 		createList.value="";
 		localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 	}
-}
+}*/
 function showTip(ele){
 	console.log(ele.textContent);
 }
