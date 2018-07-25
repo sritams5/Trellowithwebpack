@@ -6,12 +6,12 @@ require('jquery-ui-dist/jquery-ui.js');
 import  '../node_modules/bootstrap/dist/js/bootstrap.js';
 import index from '../css/index.css';
 if(document.title=='landing'){
-/*let boardnamehead = getQueryVariable("boardname");
+let boardnamehead = getQueryVariable("boardname");
 document.getElementById('boardnamevalue').textContent=boardnamehead;
 document.getElementById('addlistid').addEventListener("click", function(event) {
 listFunction();
-});2*/
-/*function getQueryVariable(variable) {
+});
+function getQueryVariable(variable) {
   let query = window.location.search.substring(1);
   let vars = query.split("&");
   for (let i=0;i<vars.length;i++) {
@@ -21,7 +21,7 @@ listFunction();
     }
   }
   console.log('Query Variable ' + variable + ' not found');
-}1*/
+}
 //let popoverpoint = document.getElementById('popoeverid');
 if (localStorage.getItem('trelloboardkeys') === null) {
 	let poplistelemt=document.createElement('li');
@@ -45,18 +45,18 @@ if (localStorage.getItem('trelloboardkeys') === null) {
 // 			 let target = event.target || event.srcElement;
 // 			 window.location.href = 'landing.html?boardname='+encodeURIComponent(event.target.textContent || event.target.innerText);
 // 	 }
-let head=document.getElementById('boards');
-head.setAttribute("data-trigger", "focus");
-
-$(head).popover({
-	html : true,
-	content: function() {
-		return $(".example-popover-content").html();
-	},
-	title: function() {
-		return $(".example-popover-title").html();
-	}
-});
+// let head=document.getElementById('boards');
+// head.setAttribute("data-trigger", "focus");
+//
+// $(head).popover({
+// 	html : true,
+// 	content: function() {
+// 		return $(".example-popover-content").html();
+// 	},
+// 	title: function() {
+// 		return $(".example-popover-title").html();
+// 	}
+// });
 
 if (localStorage.getItem(boardnamehead) === null) {
 
@@ -202,13 +202,13 @@ createList.addEventListener("keyup", function(event) {
 		localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 	}
 });
-/*function listFunction() {
+function listFunction() {
 	if(createList.value.trim() != ""){
 		createNewList(document.getElementById('createList').value);
 		createList.value="";
 		localStorage.setItem(boardnamehead, document.getElementById("mainContainer").innerHTML);
 	}
-}*/
+}
 function showTip(ele){
 	console.log(ele.textContent);
 }
@@ -553,18 +553,18 @@ $( ".divclass" ).droppable({
     //        let target = event.target || event.srcElement;
     //        window.location.href = 'landing.html?boardname='+encodeURIComponent(event.target.textContent || event.target.innerText);
     //    }
-    let head=document.getElementById('boards');
-    head.setAttribute("data-trigger", "focus");
-
-    $(head).popover({
-      html : true,
-      content: function() {
-        return $(".example-popover-content").html();
-      },
-      title: function() {
-        return $(".example-popover-title").html();
-      }
-    });
+    // let head=document.getElementById('boards');
+    // head.setAttribute("data-trigger", "focus");
+		//
+    // $(head).popover({
+    //   html : true,
+    //   content: function() {
+    //     return $(".example-popover-content").html();
+    //   },
+    //   title: function() {
+    //     return $(".example-popover-title").html();
+    //   }
+    // });
 }else if(document.title=='boards'){
   //let popoverpoint = document.getElementById('popoeverid');
   if (localStorage.getItem('trelloboardkeys') === null) {
@@ -608,20 +608,20 @@ $( ".divclass" ).droppable({
   //        let target = event.target || event.srcElement;
   //        window.location.href = 'landing.html?boardname='+encodeURIComponent(event.target.textContent || event.target.innerText);
   //    }
-  let head=document.getElementById('boards');
-  head.setAttribute("data-trigger", "focus");
-
-  $(head).popover({
-    html : true,
-    content: function() {
-      return $(".example-popover-content").html();
-    },
-    title: function() {
-      return $(".example-popover-title").html();
-    }
-  });
-}
-function lang1(event) {
-       let target = event.target || event.srcElement;
-       window.location.href = 'landing.html?boardname='+encodeURIComponent(event.target.textContent || event.target.innerText);
-   }
+//   let head=document.getElementById('boards');
+//   head.setAttribute("data-trigger", "focus");
+//
+//   $(head).popover({
+//     html : true,
+//     content: function() {
+//       return $(".example-popover-content").html();
+//     },
+//     title: function() {
+//       return $(".example-popover-title").html();
+//     }
+//   });
+ }
+// function lang1(event) {
+//        let target = event.target || event.srcElement;
+//        window.location.href = 'landing.html?boardname='+encodeURIComponent(event.target.textContent || event.target.innerText);
+//    }
